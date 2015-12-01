@@ -1,0 +1,293 @@
+Name	X	W	U	B	R	G	T	Typ	Sub	Off	Def	Str	Set	Crd	Rar	Cnt	Src
+Akroan Jailer		1					1	C	Human Soldier	1	1	2	ORI	001	C	1	
+Ampryn Tactician	2	2					4	C	Human Soldier	3	3	6	ORI	002	C	2	
+Anointer of Champions		1					1	C	Human Cleric	1	1	2	ORI	003	U	1	
+							0					0	ORI	004		0	
+Auramancer	2	1					3	C	Human Wizard	2	2	4	ORI	005	C	1	
+Aven Battle Priest	5	1					6	C	Bird Cleric	3	3	6	ORI	006	C	1	
+							0					0	ORI	007		0	
+Celestial Flare		2					2	I				0	ORI	008	C	1	
+Charging Griffin	3	1					4	C	Griffin	2	2	4	ORI	009	C	1	
+Cleric of the Forward Order	1	1					2	C	Human Cleric	2	2	4	ORI	010	C	1	
+Consul's Lieutenant		2					2	C	Human Soldier	2	1	3	ORI	011	U	1	
+Enlightened Ascetic	1	1					2	C	Cat Monk	1	1	2	ORI	012	C	1	
+Enshrouding Mist		1					1	I				0	ORI	013	C	1	
+							0					0	ORI	014		0	
+Grasp of the Hieromancer	1	1					2	E	Aura			0	ORI	015	C	1	
+							0					0	ORI	016		0	
+Healing Hands	2	1					3	S				0	ORI	017	C	1	
+Heavy Infantry	4	1					5	C	Human Soldier	3	4	7	ORI	018	C	1	
+Hixus, Prison Warden	3	2					5	CL	Human Soldier	4	4	8	ORI	019	R	1	
+Knight of the Pilgrim's Road	2	1					3	C	Human Knight	3	2	5	ORI	020	C	2	
+							0					0	ORI	021		0	
+Knighly Valor	4	1					5	E	Aura			0	ORI	022	U	1	
+							0					0	ORI	023		0	
+Kytheon's Irregulars	2	2					4	C	Human Soldier	4	3	7	ORI	024	R	1	
+Kytheon's Tactics	1	2					3	S				0	ORI	025	C	1	
+Mighty Leap	1	1					2	I				0	ORI	026	C	1	
+Murder Investigation	1	1					2	E	Aura			0	ORI	027	U	1	
+Patron of the Valiant	3	2					5	C	Angel	4	4	8	ORI	028	U	1	
+							0					0	ORI	029		0	
+Sentinel of the Eternal Watch	5	1					6	C	Giant Soldier	4	6	10	ORI	030	U	1	
+							0					0	ORI	031		0	
+Stalwart Aven	2	1					3	C	Bird Soldier	1	3	4	ORI	032	C	1	
+							0					0	ORI	033		0	
+Supression Bonds	3	1					4	E	Aura			0	ORI	034	C	1	
+							0					0	ORI	035		0	
+Topan Freeblade	1	1					2	C	Human Soldier	2	2	4	ORI	036	C	1	
+Totem-Guide Hartebeest	4	1					5	C	Antelope	2	5	7	ORI	037	U	2	
+							0					0	ORI	038		0	
+Valor in Akros	3	1					4	E				0	ORI	039	U	1	
+							0					0	ORI	039		0	
+							0					0	ORI	040		0	
+War Oracle	2	2					4	C	Human Cleric	3	3	6	ORI	041	U	1	
+Yoked Ox		1					1	C	Ox	0	4	4	ORI	042	C	2	
+Alhammarret, High Arbiter	5		2				7	CL	Sphinx	5	5	10	ORI	043	R	1	
+Anchor to the AEther	2		1				3	S				0	ORI	044	U	1	
+Artificer's Ephiphany	2		1				3	I				0	ORI	045	C	1	
+Aspiring Aeronaut	3		1				4	C	Human Artificer	1	2	3	ORI	046	C	1	
+Bone to Ash	2		2				4	I				0	ORI	047	C	2	
+							0					0	ORI	048		0	
+Clash of Wills	0		1				1	I				0	ORI	049	U	1	
+Claustrophobia	1		2				3	E	Aura			0	ORI	050	C	1	
+							0					0	ORI	051		0	
+Deep-Sea Terror	4		2				6	C	Serpent	6	6	12	ORI	052	C	1	
+							0					0	ORI	053		0	
+Disperse							0	I				0	ORI	054	C	1	
+							0					0	ORI	055		0	
+Dreadwaters	3		1				4	S				0	ORI	056	C	1	
+Faerie Miscreant			1				1	C	Faerie Rouge	1	1	2	ORI	057	C	1	
+Harbinger of the Tides			2				2	C	Merfolk Wizard	2	2	4	ORI	058	R	1	
+Hydrolash	2		1				3	I				0	ORI	059	U	1	
+							0					0	ORI	060		0	
+Jace's Sanctum	3		1				4	E				0	ORI	061	R	1	
+							0					0	ORI	062		0	
+Maritime Guard	1		1				2	C	Merfolk Soldier	1	3	4	ORI	063	C	1	
+							0					0	ORI	064		0	
+Negate	1		1				2	I				0	ORI	065	C	1	
+Nivix Barrier	3		1				4	C	Illusion Wall	0	4	4	ORI	066	C	1	
+							0					0	ORI	067		0	
+Ringwarden Owl	3		2				5	C	Bird	3	3	6	ORI	068	C	1	
+Scrapskin Drake	2		2				4	C	Zombie Drake	2	3	5	ORI	069	C	1	
+Screeching Skaab	1		1				2	C	Zombie	2	1	3	ORI	070	C	1	
+Send to Sleep	1		1				2	I				0	ORI	071	C	1	
+							0					0	ORI	072		0	
+Sigiled Starfish	1		1				2	C	Starfish	0	3	3	ORI	073	U	1	
+							0					0	ORI	074		0	
+Soulblade Djinn	3		2				5	C	Djinn	4	3	7	ORI	075	R	1	
+Sphinx's Tutelage	2		1				3	E				0	ORI	076	U	1	
+Stratus Walk	1		1				2	E	Aura			0	ORI	077	C	1	
+							0					0	ORI	078		0	
+Thopther Spy Network	2		2				4	E				0	ORI	079	R	1	
+Tower Geist	3		1				4	C	Spirit	2	2	4	ORI	080	U	1	
+Turn to Frog	1		1				2	I				0	ORI	081	U	1	
+Watercourser	2		1				3	C	Elemental	2	3	5	ORI	082	C	1	
+							0					0	ORI	083		0	
+							0					0	ORI	084		0	
+Blightcaster	3			1			4	C	Human Wizard	2	3	5	ORI	085	U	1	
+							0					0	ORI	086		0	
+Consecrated by Blood	2			2			4	E	Aura			0	ORI	087	U	1	
+							0					0	ORI	088		0	
+Dard Dabbling	2			1			3	I				0	ORI	089	C	1	
+							0					0	ORI	090		0	
+Deadbridge Shaman	2			2			4	C	Elf Shaman	3	1	4	ORI	091	C	1	
+							0					0	ORI	092		0	
+							0					0	ORI	093		0	
+							0					0	ORI	094		0	
+Eyeblight Assassin	2			2			4	C	Elf Assassin	2	2	4	ORI	095	C	1	
+Eyeblight Massacre	2			2			4	S				0	ORI	096	U	1	
+Fetid Imp	1			1			2	C	Imp	1	2	3	ORI	097	C	3	
+							0					0	ORI	098		0	
+Gilt-Feaf Winnower	3			2			5	C	Elf Warrior	4	3	7	ORI	099	R	1	
+							0					0	ORI	100		0	
+							0					0	ORI	101		0	
+Infernal Scarring	1			1			2	E	Aura			0	ORI	102	C	1	
+							0					0	ORI	103		0	
+							0					0	ORI	104		0	
+							0					0	ORI	105		0	
+							0					0	ORI	106		0	
+Macabre Waltz	1			1			2	S				0	ORI	107	C	1	
+							0					0	ORI	108		0	
+Nantuko Husk	2			1			3	C	Zombie Insect	2	2	4	ORI	109	C	1	
+Necromantic Summons	4			1			5	S				0	ORI	110	U	1	
+Nightsnare	3			1			4	S				0	ORI	111	C	1	
+							0					0	ORI	112		0	
+Rabid Bloodsucker	3			1			4	C	Vampire	3	2	5	ORI	113	C	1	
+							0					0	ORI	114		0	
+Reave Soul	1			1			2	S				0	ORI	115	C	1	
+Returned Centaur	3			1			4	C	Zombie Centaur	2	4	6	ORI	116	C	1	
+							0					0	ORI	117		0	
+Shadows of the Past	1			1			2	E				0	ORI	118	U	1	
+							0					0	ORI	119		0	
+							0					0	ORI	120		0	
+Thornbow Archer				1			1	C	Elf Archer	1	2	3	ORI	121	C	1	
+							0					0	ORI	122		0	
+Touch of Moonglove				1			1	I				0	ORI	123	C	1	
+Undead Servant	3			1			4	C	Zombie	3	2	5	ORI	124	C	1	
+							0					0	ORI	125		0	
+Weight of the Underworld	3			1			4	E	Aura			0	ORI	126	C	1	
+							0					0	ORI	127		0	
+							0					0	ORI	128		0	
+Act of Treason	2				1		3	S				0	ORI	129	C	1	
+							0					0	ORI	130		0	
+							0					0	ORI	131		0	
+Bellows Lizard					1		1	C	Lizard	1	1	2	ORI	132	C	1	
+Boggart Brute	2				2		4	C	Goblin Warrior	3	2	5	ORI	133	C	1	
+							0					0	ORI	134		0	
+							0					0	ORI	135		0	
+							0					0	ORI	136		0	
+							0					0	ORI	137		0	
+Cobblebrute	3				1		4	C	Elemental	5	2	7	ORI	138	C	1	
+							0					0	ORI	139		0	
+Dragon Fodder	1				1		2	S				0	ORI	140	C	1	
+Embermaw Hellion	3				2		5	C	Hellion	4	5	9	ORI	141	R	1	
+							0					0	ORI	142		0	
+Exquisite Firecraft	1				2		3	S				0	ORI	143	R	1	
+							0					0	ORI	144		0	
+Fiery Impulse					1		1	I				0	ORI	145	C	1	
+Firefiend Elemental	3				1		4	C	Elemental	3	2	5	ORI	146	C	1	
+							0					0	ORI	147		0	
+Ghirapur AEther Grid	2				1		3	E				0	ORI	148	U	1	
+Ghirapur Gearcrafter	2				1		3	C	Human Artificer	2	1	3	ORI	149	C	1	
+							0					0	ORI	150		0	
+							0					0	ORI	151		0	
+Infectious Bloodlust	1				1		2	E	Aura			0	ORI	152	C	1	
+							0					0	ORI	153		0	
+Mage-Ring Bully	1				1		2	C	Human Warrior	2	2	4	ORI	154	C	1	
+							0					0	ORI	155		0	
+							0					0	ORI	156		0	
+							0					0	ORI	157		0	
+Prickleboar	4				1		5	C	Boar	3	3	6	ORI	158	C	1	
+Ravaging Blaze	0				2		2	I				0	ORI	159	U	1	
+							0					0	ORI	160		0	
+Seismic Elemental	3				2		5	C	Elemental	4	4	8	ORI	161	U	1	
+Skyraker Giant	2				2		4	C	Giant	4	3	7	ORI	162	U	1	
+Smash to Smithereens	1				1		2	I		1	2	3	ORI	163	C	2	
+Subterranean Scout	1				1		2	C	Goblin Scout	2	1	3	ORI	164	C	1	
+Thopter Engineer	2				1		3	C	Human Artificer	1	3	4	ORI	165	U	1	
+							0					0	ORI	166		0	
+Volcanic Rambler	5				1		6	C	Elemental	6	4	10	ORI	167	C	3	
+Aerial Volley						1	1	I				0	ORI	168	C	1	
+							0					0	ORI	169		0	
+Caustic Caterpillar						1	1	C	Insect	1	1	2	ORI	170	C	1	
+							0					0	ORI	171		0	
+Dwynen, Gilt-Leaf Daen	2					2	4	CL	Elf Warrior	3	4	7	ORI	172	R	1	
+Dwynen's Elite	1					1	2	C	Elf Warrior	2	2	4	ORI	173	U	1	
+Elemental Bond	2					2	4	E				0	ORI	174	U	1	
+Elvish Visionary	1					1	2	C	Elf Shaman	1	1	2	ORI	175	C	1	
+							0					0	ORI	176		0	
+Gaea's Revenge	5					2	7	C	Elemental	8	5	13	ORI	177	R	1	
+							0					0	ORI	178		0	
+							0					0	ORI	179		0	
+Herald of the Pantheon	1					1	2	C	Centaur Shaman	2	2	4	ORI	180	R	1	
+Hitchclaw Recluse	2					2	4	C	Spider	1	4	5	ORI	181	C	1	
+							0					0	ORI	182		0	
+Joraga Invocation	4					2	6	S				0	ORI	183	U	1	
+Leaf Gilder	1					1	2	C	Elf Druid	2	1	3	ORI	184	C	1	
+							0					0	ORI	185		0	
+Managorger Hydra	2					2	4	C	Hydra	1	1	2	ORI	186	R	1	
+							0					0	ORI	187		0	
+Might of the Masses						1	1	I				0	ORI	188	C	2	
+							0					0	ORI	189		0	
+Nissa's Pilgrimage	2					1	3	S				0	ORI	190	C	1	
+							0					0	ORI	191		0	
+Orchard Spirit	2					2	4	C	Spirit	2	2	4	ORI	192	C	1	
+Outland Colossus	3					2	5	C	Giant	6	6	12	ORI	193	R	1	
+Pharika's Disciple	3					1	4	C	Centaur Warrior	2	3	5	ORI	194	C	1	
+Reclaim						1	1	I				0	ORI	195	C	1	
+Rhox Maulers	4					1	5	C	Rhino Soldier	4	4	8	ORI	196	C	1	
+Skysnare Spider	4					2	6	C	Spider	6	6	12	ORI	197	U	1	
+Somberwald Alpha	3					1	4	C	Wolf	3	2	5	ORI	198	U	1	
+Sylvan Messenger	3					1	4	C	Elf	2	2	4	ORI	199	U	1	
+Timberpack Wolf	1					1	2	C	Wolf	2	2	4	ORI	200	C	2	
+Titanic Growth	1					1	2	I				0	ORI	201	C	1	
+Undercity Troll	1					1	2	C	Troll	2	2	4	ORI	202	U	1	
+Valeron Wardens	2					1	3	C	Human Monk	1	3	4	ORI	203	U	1	
+Vastwood Gorger	5					1	6	C	Wurm	5	6	11	ORI	204	C	1	
+Vine Snare	2					1	3	I				0	ORI	205	C	1	
+Wild Instincts	3					1	4	S				0	ORI	206	C	1	
+							0					0	ORI	207		0	
+Yeva's Forcemage	2					1	3	C	Elf Shaman	2	2	4	ORI	208	C	1	
+Zendikar's Roil	3					2	5	E				0	ORI	209	U	2	
+							0					0	ORI	210		0	
+Blood-Cursed Knight	1	1		1			3	C	Vampire Knight	3	2	5	ORI	211	U	1	
+							0					0	ORI	212		0	
+Citadel Castellan	1	1				1	3	C	Human Knight	2	3	5	ORI	213	U	2	
+							0					0	ORI	214		0	
+							0					0	ORI	215		0	
+							0					0	ORI	216		0	
+Shaman of the Pack	1			1		1	3	C	Elf Shaman	3	2	5	ORI	217	U	1	
+Thunderclap Wyvern	2	1	1				4	C	Drake	2	3	5	ORI	218	U	2	
+Zendikar Incarnate	2				1	1	4	C	Elemental	*	4	4	ORI	219	U	1	
+							0					0	ORI	220		0	
+							0					0	ORI	221		0	
+							0					0	ORI	222		0	
+Bonded Construct	1						1	CA	Construct	2	1	3	ORI	223	C	1	
+							0					0	ORI	224		0	
+Chief of the Foundry	3						3	CA	Construct	2	3	5	ORI	225	U	1	
+							0					0	ORI	226		0	
+Guardian Automaton	4						4	CA	Construct	3	3	6	ORI	227	C	1	
+Guardians of Meletis	3						3	AC	Golem	0	6	6	ORI	228	C	1	
+Hangarback Walker	0						0	CA	Construct	0	0	0	ORI	229	R	1	
+							0					0	ORI	230		0	
+							0					0	ORI	231		0	
+							0					0	ORI	232		0	
+Metorite	5						5	A				0	ORI	233	U	1	
+Orbs of Warding	5						5	A				0	ORI	234	R	1	
+Prisim Ring	1						1	A				0	ORI	235	U	1	
+							0					0	ORI	236		0	
+Ramroller	3						3	CA	Juggernaut	2	3	5	ORI	237	U	1	
+							0					0	ORI	238		0	
+Sigil of Valor	2						2	A	Equipment			0	ORI	239	U	1	
+							0					0	ORI	240		0	
+Throwing Knife	2						2	A	Equipment			0	ORI	241	U	1	
+							0					0	ORI	242		0	
+							0					0	ORI	243		0	
+							0					0	ORI	244		0	
+							0					0	ORI	245		0	
+Evolving Wilds							0	L				0	ORI	246	C	2	
+							0					0	ORI	247		0	
+							0					0	ORI	248		0	
+							0					0	ORI	249		0	
+Rogue's Passage							0	L				0	ORI	250	U	1	
+							0					0	ORI	251		0	
+							0					0	ORI	252		0	
+Plains							0	BL				0	ORI	253	L		
+Plains							0	BL				0	ORI	254	L		
+Plains							0	BL				0	ORI	255	L		
+Plains							0	BL				0	ORI	256	L		
+Island							0	BL				0	ORI	257	L		
+Island							0	BL				0	ORI	258	L		
+Island							0	BL				0	ORI	259	L		
+Island							0	BL				0	ORI	260	L		
+Swamp							0	BL				0	ORI	261	L		
+Swamp							0	BL				0	ORI	262	L		
+Swamp							0	BL				0	ORI	263	L		
+Swamp							0	BL				0	ORI	264	L		
+Mountain							0	BL				0	ORI	265	L		
+Mountain							0	BL				0	ORI	266	L		
+Mountain							0	BL				0	ORI	267	L		
+Mountain							0	BL				0	ORI	268	L		
+Forest							0	BL				0	ORI	269	L		
+Forest							0	BL				0	ORI	270	L		
+Forest							0	BL				0	ORI	271	L		
+Forest							0	BL				0	ORI	272	L		
+Aegis Angel	4	2					6	C	Angel	5	5	10	ORI	273	R	1	
+Devine Verdict	3	1					4	I				0	ORI	274	C	1	
+Eagle of the Watch	2	1					3	C	Bird	2	1	3	ORI	275	C	1	
+Serra Angel	3	2					5	C	Angel	4	4	8	ORI	276	U	1	
+Into the Void	3		1				4	S				0	ORI	277	U	1	
+Mahamoti Djinn	4		2				6	C	Djinn	5	6	11	ORI	278	R	1	
+Weave Fate	3		1				4	I				0	ORI	279	C	1	
+Flesh to Dust	3			2			5	I				0	ORI	280	C	1	
+Mind Rot	2			2			4	S				0	ORI	281	C	1	
+Nightmare	5			1			6	C	Nightmare Horse	*	*	0	ORI	282	R	1	
+Sengir Vampire	3			2			5	C	Vampire	4	4	8	ORI	283	U	1	
+Fiery Hellhound	1				2		3	C	Elemental Hound	2	2	4	ORI	284	C	1	
+Shivan Dragon	4				2		6	C	Dragon	5	5	10	ORI	285	R	1	
+Plummet	1					1	2	I				0	ORI	286	C	1	
+Prized Unicorn	3					1	4	C	Unicorn	2	2	4	ORI	287	U	1	
+Terra Stomper	3					3	6	C	Beast	8	8	16	ORI	288	R	1	
+Goblin							0	TC	Goblin			0	ORI	306	T	2	
+Elf Warrior							0	TC	Elf Warrior			0	ORI	309	T	1	
+Thopter							0	TAC	Thopter			0	ORI	311	T	1	
