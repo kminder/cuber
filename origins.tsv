@@ -227,7 +227,7 @@ Bonded Construct	1						1	CA	Construct	2	1	3	ORI	223	C	1
 Chief of the Foundry	3						3	CA	Construct	2	3	5	ORI	225	U	1	
 							0					0	ORI	226		0	
 Guardian Automaton	4						4	CA	Construct	3	3	6	ORI	227	C	1	
-Guardians of Meletis	3						3	AC	Golem	0	6	6	ORI	228	C	1	
+Guardians of Meletis	3						3	CA	Golem	0	6	6	ORI	228	C	1
 Hangarback Walker	0						0	CA	Construct	0	0	0	ORI	229	R	1	
 							0					0	ORI	230		0	
 							0					0	ORI	231		0	
@@ -290,4 +290,4 @@ Prized Unicorn	3					1	4	C	Unicorn	2	2	4	ORI	287	U	1
 Terra Stomper	3					3	6	C	Beast	8	8	16	ORI	288	R	1	
 Goblin							0	TC	Goblin			0	ORI	306	T	2	
 Elf Warrior							0	TC	Elf Warrior			0	ORI	309	T	1	
-Thopter							0	TAC	Thopter			0	ORI	311	T	1	
+Thopter							0	TCA	Thopter			0	ORI	311	T	1

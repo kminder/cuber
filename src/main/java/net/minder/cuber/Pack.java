@@ -21,6 +21,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.josql.QueryResults;
 
 import java.util.Comparator;
+import java.util.Set;
 
 public class Pack extends Stack {
 
@@ -29,10 +30,14 @@ public class Pack extends Stack {
   }
 
   public String toString() {
-    String ids = StringUtils.join( query( String.format( "select setId from %s order by setId", Card.class.getName() ) ).getResults(), "," );
+    String ids = StringUtils.join( Utils.column( 0, query( String.format( "select setId from %s order by setId", Card.class.getName() ) ) ), "," );
     return String.format(
-        "Pack[%s]: T=%d, C=%d, U=%d, R=%d, M=%d/%d/%1.1f, S=%d/%d/%1.1f, W=%d: %s",
-        getName(), getCards().size(), countCommon(), countUncommon(), countRare(), totalMana(), maxMana(), avgMana(), totalStrength(), maxStrength(), avgStrength(), totalWeight(), ids );
+        "Pack[%s]: T=%2d, C=%d, U=%d, R=%d, c=%2d, i=%d, e=%d, a=%d, l=%d, M=%d/%d/%1.1f (%2d/%2d/%2d/%2d/%2d) S=%2d/%2d/%1.1f(%2d/%2d), W=%3d [%s]",
+        getName(), getCards().size(), countCommon(), countUncommon(), countRare(),
+        countTypes(Card.CREATURE_TYPES), countType("I"), countType("E"), countType("A"), countTypes(Card.LAND_TYPES),
+        totalMana(), maxMana(), avgMana(),
+        totalMana("whiteMana"), totalMana("blueMana"), totalMana("blackMana"), totalMana("redMana"), totalMana("greenMana"),
+        totalStrength(), maxStrength(), avgStrength(), totalOffense(), totalDefense(), totalWeight(), ids );
   }
 
   public int countCommon() {
@@ -47,8 +52,23 @@ public class Pack extends Stack {
     return selectCards( "rarity in ('R','M')" ).size();
   }
 
+  public int countType( String type ) {
+    return selectCards( String.format( "type = '%s'", type ) ).size();
+  }
+
+  public int countTypes( Set<String> types ) {
+    String set = "'" + StringUtils.join( types, "','" ) + "'";
+    return selectCards( String.format( "type in (%s)", set ) ).size();
+  }
+
   public int totalMana() {
     QueryResults r = query( String.format( "select sum(:_allobjs,totalMana,'sum') from %s", Card.class.getName() ) );
+    Double i = (Double)r.getSaveValue( "sum" );
+    return i.intValue();
+  }
+
+  public int totalMana( String mana ) {
+    QueryResults r = query( String.format( "select sum(:_allobjs,%s,'sum') from %s", mana, Card.class.getName() ) );
     Double i = (Double)r.getSaveValue( "sum" );
     return i.intValue();
   }
@@ -63,6 +83,18 @@ public class Pack extends Stack {
     QueryResults r = query( String.format( "select avg(:_allobjs,totalMana,'avg') from %s", Card.class.getName() ) );
     Double i = (Double)r.getSaveValue( "avg" );
     return i.doubleValue();
+  }
+
+  public int totalOffense () {
+    QueryResults r = query( String.format( "select sum(:_allobjs,offensiveStrength,'sum') from %s", Card.class.getName() ) );
+    Double i = (Double)r.getSaveValue( "sum" );
+    return i.intValue();
+  }
+
+  public int totalDefense() {
+    QueryResults r = query( String.format( "select sum(:_allobjs,defensiveStrength,'sum') from %s", Card.class.getName() ) );
+    Double i = (Double)r.getSaveValue( "sum" );
+    return i.intValue();
   }
 
   public int totalStrength() {

@@ -17,6 +17,11 @@
  */
 package net.minder.cuber;
 
+import org.josql.QueryResults;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Utils {
 
   static int parseInt( String s, int d ) {
@@ -27,6 +32,15 @@ public class Utils {
       // Ignore it and use the default.
     }
     return i;
+  }
+
+  static List column( int index, QueryResults result ) {
+    List rows = result.getResults();
+    List column = new ArrayList( rows.size() );
+    for( Object row: rows ) {
+      column.add( ((List)row).get( index ) );
+    }
+    return column;
   }
 
 }

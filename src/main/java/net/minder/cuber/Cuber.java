@@ -75,6 +75,9 @@ public class Cuber {
       draft.getPacks().add( pack );
     }
 
+    System.out.println( "CONFIG" );
+    System.out.println( config.toString() );
+
     System.out.println( "UNBALANCED" );
     Collections.sort( draft.getPacks(), Pack.WEIGHT_COMPARATOR );
     System.out.println( draft.toString() );
@@ -107,7 +110,7 @@ public class Cuber {
     Collections.sort( draft.getPacks(), Pack.WEIGHT_COMPARATOR );
     System.out.println( draft.toString() );
 
-    System.out.println( "INDEX" );
+    System.out.println( "PICKLIST" );
     TreeMap<String,String> index = new TreeMap<String,String>();
     for( Pack pack: draft.getPacks() ) {
       for( Card card: pack.getCards() ) {

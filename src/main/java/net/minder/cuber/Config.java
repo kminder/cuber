@@ -23,6 +23,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -159,10 +160,23 @@ public class Config extends Properties {
         } catch( NumberFormatException e ) {
           // Ignore it and use the default time based seed.
         }
+      } else {
+        setProperty( "seed", Long.toString( seed ) );
       }
       random = new Random( seed );
     }
     return random;
+  }
+
+  @Override
+  public String toString() {
+    StringWriter writer = new StringWriter();
+    try {
+      store( writer, null );
+    } catch( IOException e ) {
+      // Not likely to happen with an in memory writer.
+    }
+    return writer.toString();
   }
 
 }

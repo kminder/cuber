@@ -17,9 +17,16 @@
  */
 package net.minder.cuber;
 
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Card {
+
+  public static Set<String> CREATURE_TYPES = new HashSet( Arrays.asList( "C", "CL", "CA" ) );
+  public static Set<String> LAND_TYPES = new HashSet( Arrays.asList( "L", "BL" ) );
+  public static Set<String> TOKEN_TYPES = new HashSet( Arrays.asList( "T", "TC", "TCA" ) );
 
   public String set;
   public String id;
