@@ -11,6 +11,16 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.4</version>
         </dependency>
@@ -23,6 +33,23 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-josql</artifactId>
             <version>2.16.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.uncommons.watchmaker</groupId>
+            <artifactId>watchmaker-framework</artifactId>
+            <version>0.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.cqengine</groupId>
+            <artifactId>cqengine</artifactId>
+            <version>2.1.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

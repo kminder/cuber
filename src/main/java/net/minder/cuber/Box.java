@@ -45,7 +45,7 @@ public class Box extends Stack {
   private static final int COLUMN_DEFENSE = 11;
   private static final int COLUMN_STRENGTH = 12;
   private static final int COLUMN_SET = 13;
-  private static final int COLUMN_ID = 14;
+  private static final int COLUMN_CARD = 14;
   private static final int COLUMN_RARITY = 15;
   private static final int COLUMN_COUNT = 16;
   private static final int COLUMN_SOURCES = 17;
@@ -77,25 +77,26 @@ public class Box extends Stack {
           String defense = columns[COLUMN_DEFENSE];
           String strength = columns[COLUMN_STRENGTH];
           String set = columns[COLUMN_SET];
-          String id = columns[COLUMN_ID];
+          String num = columns[ COLUMN_CARD ];
           String rarity = columns[COLUMN_RARITY];
           String countStr = columns.length > COLUMN_COUNT ? columns[COLUMN_COUNT] : "1";
           String sourcesStr = columns.length > COLUMN_SOURCES ? columns[COLUMN_SOURCES] : "";
           int count = Utils.parseInt( countStr, 0 );
+          int copy = 0;
           Set<String> sources = parseSources( sourcesStr );
           for( String source: sources ) {
             Card card = new Card(
-                set, id, name, type, subType, rarity,
+                set, num, String.format( "%02d", copy++ ), name, type, subType, rarity,
                 anyMana, whiteMana, blueMana, blackMana, redMana, greenMana, totalMana,
                 offense, defense, strength, source );
-            box.getCards().add( card );
+            box.addCard( card );
           }
           for( int i=sources.size(); i < count; i++ ) {
             Card card = new Card(
-                set, id, name, type, subType, rarity,
+                set, num, String.format( "%02d", copy++ ), name, type, subType, rarity,
                 anyMana, whiteMana, blueMana, blackMana, redMana, greenMana, totalMana,
                 offense, defense, strength, "" );
-            box.getCards().add( card );
+            box.addCard( card );
           }
         }
       }
@@ -104,16 +105,16 @@ public class Box extends Stack {
     return box;
   }
 
-  public String toString() {
-    StringBuilder s = new StringBuilder();
-    s.append( getHeader( COLUMN_SEP ) );
-    s.append( System.lineSeparator() );
-    for( Card card: getCards() ) {
-      s.append( card.toString( COLUMN_SEP ) );
-      s.append( System.lineSeparator() );
-    }
-    return s.toString();
-  }
+//  public String toString() {
+//    StringBuilder s = new StringBuilder();
+//    s.append( getHeader( COLUMN_SEP ) );
+//    s.append( System.lineSeparator() );
+//    for( Card card: getCards() ) {
+//      s.append( card.toString( COLUMN_SEP ) );
+//      s.append( System.lineSeparator() );
+//    }
+//    return s.toString();
+//  }
 
   private static String getHeader( String sep ) {
     return String.format(

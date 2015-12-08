@@ -1,6 +1,9 @@
 ### Java template
 *.class
 
+### Maven
+target/
+
 # Package Files #
 *.jar
 *.war

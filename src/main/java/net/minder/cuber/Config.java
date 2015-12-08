@@ -17,6 +17,7 @@
  */
 package net.minder.cuber;
 
+import com.googlecode.cqengine.query.Query;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -31,6 +32,10 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
+
+import static com.googlecode.cqengine.query.QueryFactory.and;
+import static com.googlecode.cqengine.query.QueryFactory.equal;
+import static com.googlecode.cqengine.query.QueryFactory.in;
 
 public class Config extends Properties {
 
@@ -84,12 +89,10 @@ public class Config extends Properties {
     return types;
   }
 
-  private String cardFilter = null;
-  public String getCardFilter() {
+  private Query cardFilter = null;
+  public Query getCardFilter() {
     if( cardFilter == null ) {
-      String sets = "'" + StringUtils.join( getSets(), "','" ) + "'";
-      String types = "'" + StringUtils.join( getTypes(), "','" ) + "'";
-      cardFilter = String.format( "set in (%s) and type in (%s)", sets, types );
+      cardFilter = and( in( Card.SET, getSets() ), Utils.in( Card.TYPE, getTypes() ) );
     }
     return cardFilter;
   }

@@ -17,21 +17,52 @@
  */
 package net.minder.cuber;
 
+import com.googlecode.cqengine.attribute.Attribute;
+import com.googlecode.cqengine.query.Query;
+import com.googlecode.cqengine.query.QueryFactory;
 import org.josql.QueryResults;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Utils {
 
+  public static <O, A> Query<O> in( Attribute<O, A> attribute, Collection<A> values ) {
+    int s = values.size();
+    Query<O> q;
+    switch( s ) {
+      case 0:
+        q = QueryFactory.none( attribute.getObjectType() );
+        break;
+      case 1:
+        q = QueryFactory.equal( attribute, values.iterator().next() );
+        break;
+      default:
+        q = QueryFactory.in( attribute, values );
+        break;
+    }
+    return q;
+  }
+
   static int parseInt( String s, int d ) {
-    int i = d;
+    int n = d;
     try {
-      i = Integer.parseInt( s );
+      n = Integer.parseInt( s );
     } catch ( NumberFormatException e ) {
       // Ignore it and use the default.
     }
-    return i;
+    return n;
+  }
+
+  public static double parseDbl( String s, double d ) {
+    double n = d;
+    try {
+      n = Double.parseDouble( s );
+    } catch ( NumberFormatException e ) {
+      // Ignore it and use the default.
+    }
+    return n;
   }
 
   static List column( int index, QueryResults result ) {

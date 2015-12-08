@@ -17,11 +17,8 @@
  */
 package net.minder.cuber;
 
-import org.apache.commons.lang3.StringUtils;
-import org.josql.QueryResults;
-
 import java.util.Comparator;
-import java.util.Set;
+import java.util.Map;
 
 public class Pack extends Stack {
 
@@ -30,93 +27,19 @@ public class Pack extends Stack {
   }
 
   public String toString() {
-    String ids = StringUtils.join( Utils.column( 0, query( String.format( "select setId from %s order by setId", Card.class.getName() ) ) ), "," );
+    //String ids = StringUtils.join( Utils.column( 0, query( String.format( "select setId from %s order by setId", Card.class.getName() ) ) ), "," );
+    Map<String,Metric> metrics = getMetrics();
     return String.format(
-        "Pack[%s]: T=%2d, C=%d, U=%d, R=%d, c=%2d, i=%d, e=%d, a=%d, l=%d, M=%d/%d/%1.1f (%2d/%2d/%2d/%2d/%2d) S=%2d/%2d/%1.1f(%2d/%2d), W=%3d [%s]",
-        getName(), getCards().size(), countCommon(), countUncommon(), countRare(),
-        countTypes(Card.CREATURE_TYPES), countType("I"), countType("E"), countType("A"), countTypes(Card.LAND_TYPES),
-        totalMana(), maxMana(), avgMana(),
-        totalMana("whiteMana"), totalMana("blueMana"), totalMana("blackMana"), totalMana("redMana"), totalMana("greenMana"),
-        totalStrength(), maxStrength(), avgStrength(), totalOffense(), totalDefense(), totalWeight(), ids );
-  }
-
-  public int countCommon() {
-    return selectCards( "rarity = 'C'" ).size();
-  }
-
-  public int countUncommon() {
-    return selectCards( "rarity = 'U'" ).size();
-  }
-
-  public int countRare() {
-    return selectCards( "rarity in ('R','M')" ).size();
-  }
-
-  public int countType( String type ) {
-    return selectCards( String.format( "type = '%s'", type ) ).size();
-  }
-
-  public int countTypes( Set<String> types ) {
-    String set = "'" + StringUtils.join( types, "','" ) + "'";
-    return selectCards( String.format( "type in (%s)", set ) ).size();
-  }
-
-  public int totalMana() {
-    QueryResults r = query( String.format( "select sum(:_allobjs,totalMana,'sum') from %s", Card.class.getName() ) );
-    Double i = (Double)r.getSaveValue( "sum" );
-    return i.intValue();
-  }
-
-  public int totalMana( String mana ) {
-    QueryResults r = query( String.format( "select sum(:_allobjs,%s,'sum') from %s", mana, Card.class.getName() ) );
-    Double i = (Double)r.getSaveValue( "sum" );
-    return i.intValue();
-  }
-
-  public int maxMana() {
-    QueryResults r = query( String.format( "select max(:_allobjs,totalMana,'val') from %s", Card.class.getName() ) );
-    Double i = (Double)r.getSaveValue( "val" );
-    return i.intValue();
-  }
-
-  public double avgMana() {
-    QueryResults r = query( String.format( "select avg(:_allobjs,totalMana,'avg') from %s", Card.class.getName() ) );
-    Double i = (Double)r.getSaveValue( "avg" );
-    return i.doubleValue();
-  }
-
-  public int totalOffense () {
-    QueryResults r = query( String.format( "select sum(:_allobjs,offensiveStrength,'sum') from %s", Card.class.getName() ) );
-    Double i = (Double)r.getSaveValue( "sum" );
-    return i.intValue();
-  }
-
-  public int totalDefense() {
-    QueryResults r = query( String.format( "select sum(:_allobjs,defensiveStrength,'sum') from %s", Card.class.getName() ) );
-    Double i = (Double)r.getSaveValue( "sum" );
-    return i.intValue();
-  }
-
-  public int totalStrength() {
-    QueryResults r = query( String.format( "select sum(:_allobjs,totalStrength,'sum') from %s", Card.class.getName() ) );
-    Double i = (Double)r.getSaveValue( "sum" );
-    return i.intValue();
-  }
-
-  public int maxStrength() {
-    QueryResults r = query( String.format( "select max(:_allobjs,totalStrength,'max') from %s", Card.class.getName() ) );
-    Double i = (Double)r.getSaveValue( "max" );
-    return i.intValue();
-  }
-
-  public double avgStrength() {
-    QueryResults r = query( String.format( "select avg(:_allobjs,totalStrength,'avg') from %s", Card.class.getName() ) );
-    Double i = (Double)r.getSaveValue( "avg" );
-    return i.doubleValue();
-  }
-
-  public int totalWeight() {
-    return totalMana() + totalStrength();
+        "Pack[%s]: T=%2d, C=%.0f, U=%.0f, R=%.0f, c=%2.0f, i=%.0f, e=%.0f, s=%.0f, a=%.0f, l=%.0f, M=%.0f/%.0f/%1.1f (%2.0f/%2.0f/%2.0f/%2.0f/%2.0f) S=%2.0f/%2.0f/%1.1f(%2.0f/%2.0f), W=%3.0f",
+        getName(), getCount(),
+        metrics.get(COMMON).getSum(), metrics.get(UNCOMMON).getSum(), metrics.get(RARE).getSum(),
+        metrics.get(CREATURE).getSum(), metrics.get(INSTANT).getSum(), metrics.get(ENCHANTMENT).getSum(), metrics.get(SORCERY).getSum(), metrics.get(ARTIFACT).getSum(), metrics.get(LAND).getSum(),
+        metrics.get(COST).getSum(), metrics.get(COST).getMax(), metrics.get(COST).getAvg(),
+        metrics.get(WHITE).getSum(), metrics.get(BLUE).getSum(), metrics.get(BLACK).getSum(), metrics.get(RED).getSum(), metrics.get(GREEN).getSum(),
+        metrics.get(STRENGTH).getSum(), metrics.get(STRENGTH).getMax(), metrics.get(STRENGTH).getAvg(),
+        metrics.get(OFFENSE).getSum(), metrics.get(DEFENSE).getSum(),
+        metrics.get(WEIGHT).getSum() );
+        //ids );
   }
 
   public static Comparator<Pack> NAME_COMPARATOR = new WeightComparator();
@@ -129,7 +52,7 @@ public class Pack extends Stack {
   public static Comparator<Pack> WEIGHT_COMPARATOR = new WeightComparator();
   public static class WeightComparator implements Comparator<Pack> {
     public int compare( Pack left, Pack right ) {
-      return Integer.compare( right.totalWeight(), left.totalWeight() );
+      return Double.compare( right.getMetrics().get( WEIGHT ).getSum(), left.getMetrics().get( WEIGHT ).getSum() );
     }
   }
 

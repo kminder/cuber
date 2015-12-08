@@ -17,21 +17,33 @@
  */
 package net.minder.cuber;
 
-import org.apache.commons.lang3.StringUtils;
+import org.uncommons.maths.random.MersenneTwisterRNG;
+import org.uncommons.watchmaker.framework.EvolutionEngine;
+import org.uncommons.watchmaker.framework.EvolutionObserver;
+import org.uncommons.watchmaker.framework.GenerationalEvolutionEngine;
+import org.uncommons.watchmaker.framework.PopulationData;
+import org.uncommons.watchmaker.framework.SelectionStrategy;
+import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
+import org.uncommons.watchmaker.framework.selection.TruncationSelection;
+import org.uncommons.watchmaker.framework.termination.GenerationCount;
+import org.uncommons.watchmaker.framework.termination.Stagnation;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Random;
 import java.util.TreeMap;
+
+import static com.googlecode.cqengine.query.QueryFactory.and;
+import static com.googlecode.cqengine.query.QueryFactory.equal;
 
 public class Cuber {
 
   public static void main( String[] args ) throws IOException {
 
-    if( args.length != 2 ) {
+    if( args.length < 2 ) {
       System.err.println( "Usage: java -jar cuber.jar {config.cfg} {box.tsv} ");
       System.exit( 1 );
     }
@@ -40,81 +52,67 @@ public class Cuber {
     String configFileName = args[0];
     Config config = Config.load( new File( configFileName ) );
 
-    Box cube = new Box( config.getName() );
-
-    // Load cards from each box into the cube.
-    for( int i=1; i<=args.length; i++ ) {
-      String boxFileName = args[ 1 ];
-      Box box = Box.load( new File( boxFileName ) );
-      //System.out.println( box.toString() );
-      cube.getCards().addAll( box.selectCards( config.getCardFilter() ) );
-      //System.out.println( cube.toString() );
-    }
-
-    Draft draft = new Draft( cube.getName() );
-    Map<Set<String>,Integer> comp = config.getPackComposition();
-
-    for( int i=1, n=config.getPackCount(); i<=n; i++ ) {
-      Pack pack = new Pack( String.format( "%02d", i ) );
-      for( Map.Entry<Set<String>,Integer> pair: comp.entrySet() ) {
-        Set<String> rarity = pair.getKey();
-        int count = pair.getValue();
-        // Select a stack of cards by rarity.
-        List<Card> cards = cube.selectCardsByRarity( rarity );
-        if( cards.size() < count ) {
-          throw new IllegalStateException( String.format( "Ran out of %s cards.", StringUtils.join( rarity ) ) );
-        }
-        // Shuffle the stack.
-        Collections.shuffle( cards, config.getRandom() );
-        for( int j=0; j<count; j++ ) {
-          Card card = cards.get( j );
-          cube.getCards().remove( card );
-          pack.getCards().add( card );
-        }
-      }
-      draft.getPacks().add( pack );
-    }
-
     System.out.println( "CONFIG" );
     System.out.println( config.toString() );
 
-    System.out.println( "UNBALANCED" );
-    Collections.sort( draft.getPacks(), Pack.WEIGHT_COMPARATOR );
-    System.out.println( draft.toString() );
+    Box cube = new Box( config.getName() );
 
-    for( int i=0; i<config.getBalanceIterations(); i++ ) {
-      Collections.sort( draft.getPacks(), Pack.WEIGHT_COMPARATOR );
-
-      Pack fixPack = draft.getFirstPack();
-      Collections.sort( fixPack.getCards(), Card.WEIGHT_COMPARATOR );
-
-      Card fixCard = fixPack.getFirstCard();
-      Card replacement = selectReplacement( cube, fixCard, false );
-      fixPack.getCards().remove( fixCard );
-      cube.getCards().remove( replacement );
-      fixPack.getCards().add( replacement );
-      cube.getCards().add( fixCard );
-
-
-      fixPack = draft.getLastPack();
-      Collections.sort( fixPack.getCards(), Card.WEIGHT_COMPARATOR );
-      fixCard = fixPack.getLastCard();
-      replacement = selectReplacement( cube, fixCard, true );
-      fixPack.getCards().remove( fixCard );
-      cube.getCards().remove( replacement );
-      fixPack.getCards().add( replacement );
-      cube.getCards().add( fixCard );
+    // Load cards from each box into the cube.
+    for( int i=1; i<args.length; i++ ) {
+      String boxFileName = args[ i ];
+      Box box = Box.load( new File( boxFileName ) );
+      //System.out.println( box.toString() );
+      cube.addCards( box.getCards( config.getCardFilter() ) );
     }
 
-    System.out.println( "BALANCED" );
+    System.out.println( cube.toString() );
+    System.out.println( "DUP=" + cube.getDuplication() );
+
+    DraftFactory factory = new DraftFactory( cube.getName(), config, cube );
+    DraftMutator mutator = new DraftMutator();
+    DraftEvaluator evaluator = new DraftEvaluator();
+    SelectionStrategy selection = new TruncationSelection(0.99d);
+    //SelectionStrategy selection = new RouletteWheelSelection();
+
+    //Draft draft = factory.generateRandomCandidate( config.getRandom() );
+    //System.out.println( "UNBALANCED" );
+    //Collections.sort( draft.getPacks(), Pack.WEIGHT_COMPARATOR );
+    //System.out.println( draft.toString() );
+
+    Random random = new MersenneTwisterRNG();
+
+    EvolutionEngine<Draft> engine = new GenerationalEvolutionEngine<Draft>(
+        factory,
+        mutator,
+        evaluator,
+        selection,
+        random );
+
+    engine.addEvolutionObserver( new EvolutionObserver<Draft>() {
+      public void populationUpdate( PopulationData<? extends Draft> data) {
+        System.out.printf("Generation %d: %s\n",
+            data.getGenerationNumber(),
+            data.getBestCandidate());
+      }
+    });
+
+    //Draft draft = engine.evolve( 10, 0, new TargetFitness( 11, true ) );
+    //Draft draft = engine.evolve( 10, 5, new GenerationCount( config.getBalanceIterations() ) );
+    Draft draft = engine.evolve( 100, 0, new Stagnation( config.getBalanceIterations(), false ) );
+
+    //for( int i=0; i<config.getBalanceIterations(); i++ ) {
+    //  draft = mutator.apply( draft, config.getRandom() );
+    //}
+
+    System.out.println( "EVOLVED" );
     Collections.sort( draft.getPacks(), Pack.WEIGHT_COMPARATOR );
-    System.out.println( draft.toString() );
+    System.out.println( draft.toDescription() );
 
     System.out.println( "PICKLIST" );
     TreeMap<String,String> index = new TreeMap<String,String>();
     for( Pack pack: draft.getPacks() ) {
       for( Card card: pack.getCards() ) {
-        index.put( card.getSetId(), pack.getName() );
+        index.put( card.id, pack.getName() );
       }
     }
     for( Map.Entry<String,String> entry: index.entrySet() ) {
@@ -145,12 +143,11 @@ public class Cuber {
     List<Card> replacements;
     Card replacement;
 
-    replacements = stack.selectCards( String.format( "rarity='%s' and type='%s'", original.rarity, original.type ) );
+    replacements = stack.getCardList( and( equal( Card.RARITY, original.rarity ), equal( Card.TYPE, original.type ) ) );
     replacement = selectReplacement( replacements, original, stronger );
 
     if( replacement == null ) {
-      //System.err.println( "No replacements for " + original + ", relaxing type." );
-      replacements = stack.selectCards( String.format( "rarity='%s'", original.rarity ) );
+      replacements = stack.getCardList( equal( Card.RARITY, original.rarity ) );
       replacement = selectReplacement( replacements, original, stronger );
     }
 
